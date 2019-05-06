@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>WK LOGO</title>
+		
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+		
+		<style>
+		body{
+				background-color:#000000;
+			}
+
+
+			
+			.ui-btn {
+				margin:.25em !important;
+			}
+			
+			.command {
+				width:120px !important;
+				height:40px !important;
+			}
+			.hidden {
+				display:none;
+			}
+		</style>
+		
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+		
+		
+		<script>
+			
+			
+			$(document).ready(function(){
+				
+		        $("#WillNavBtn").addClass("ui-btn-active");
+		        
+		        
+		        $("#playFromHome").click(function(){
+		        	
+					$("#tabs").tabs( "option", "active", 1 );
+		            $("#playNavBtn").addClass("ui-btn-active");
+		            $("#homeNavBtn").removeClass("ui-btn-active");
+				});
+		        
+		   
+                var play = [
+                    "play0",
+                    "play1",
+                    "play2",
+                    "play3",
+                    "play4"
+                ]
+
+              
+                var pastIndx = 0;
+             
+                var indx = 0;
+                
+                $("#tellFortune").on('click', function() {
+                
+                    while (indx == pastIndx) {
+                    	
+                        indx = Math.floor(Math.random()*fortunes.length);
+                    }
+                   
+                    pastIndx = indx;
+                   
+                    $("#fortune").html(fortunes[indx]);
+                  
+                    $(".fortuneContainer").show();
+                });
+
+			});
+		</script>
+	</head>
+	<body>
+		
+		<div data-role="tabs" id="tabs">
+			
+			<div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;">
+				<div data-role="navbar">
+				
+					<ul>
+						<li><a href="#WillKim" id="WillKimNavBtn" data-icon="Will">Will Kim</a>
+						</li>
+						<li><a href="#playScreen" id="playNavBtn" data-icon="star">Motion Graphics</a>
+						</li>
+						<li><a href="#aboutScreen" data-icon="info">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		
+			<div id="homeScreen" class="ui-content">
+				<font size="20" color="white">
+					
+				<h3>WILL KIM</h3>
+				<button id="playFromHome" class="ui-btn ui-btn-inline command">WHAT'S UP</button>
+			</div>
+			<div class="addimg">
+
+	<img src="WK Logo.jpg">
+			
+			<div id="playScreen" class="ui-content">
+				<h3>MOTION GRAPHICS</h3>
+        		
+        		<button id="tellFortune" class="ui-btn ui-btn-inline command">PLAY</button>
+
+        		<div class="ui-body ui-body-a ui-corner-all fortuneContainer hidden">
+					<h3>ABOUT</h3>
+					<p id="fortune"></p>
+				</div>
+				<div class="addimg">
+
+					<img src="homepage.jpg">
+			</div>
+			
+			
+			<div id="aboutScreen" class="ui-content">
+				<h3>ABOUT</h3>
+			</div>
+		</div>
+		
+	</body>
+</html>
